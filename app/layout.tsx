@@ -1,14 +1,17 @@
-import Footer from '@/components/footer'
-import './globals.css'
-import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
+
+import ModalProvider from '@/providers/modal-provider'
+import ToastProvider from '@/providers/toast-provider'
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
+
+import './globals.css'
 
 const font = Urbanist({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Store',
-  description: 'E-commerce site created with Next.js, Tailwind and Typescript',
+  description: 'An e-commerce site created with Next.js, Typescript and Tailwind.',
 }
 
 export default function RootLayout({
@@ -19,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToastProvider />
+        <ModalProvider />
         <Navbar />
-        {children}
+          {children}
         <Footer />
       </body>
     </html>
