@@ -29,6 +29,7 @@ const Summary = () => {
         return total + Number(item.price)
     }, 0);
 
+    // try and catch may not be necessary
     // const onCheckout = async () => {
     //     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
     //         productIds: items.map((item) => item.id)
@@ -38,17 +39,16 @@ const Summary = () => {
     // }
 
     const onCheckout = async () => {
-    try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-            productIds: items.map((item) => item.id)
-        });
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+                productIds: items.map((item) => item.id)
+            });
 
-        window.location = response.data.url;
-    } catch (error) {
-        console.error("Error during checkout:", error);
-        // Handle the error or display an error message to the user.
+            window.location = response.data.url;
+        } catch (error:any) {
+            console.error("Error during checkout:", error);
+        }
     }
-}
 
 
     return (
