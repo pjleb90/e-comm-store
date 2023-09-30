@@ -29,13 +29,27 @@ const Summary = () => {
         return total + Number(item.price)
     }, 0);
 
+    // const onCheckout = async () => {
+    //     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+    //         productIds: items.map((item) => item.id)
+    //     });
+
+    //     window.location = response.data.url;
+    // }
+
     const onCheckout = async () => {
+    try {
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
             productIds: items.map((item) => item.id)
         });
 
         window.location = response.data.url;
+    } catch (error) {
+        console.error("Error during checkout:", error);
+        // Handle the error or display an error message to the user.
     }
+}
+
 
     return (
         <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
