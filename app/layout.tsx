@@ -10,7 +10,7 @@ import './globals.css'
 const font = Urbanist({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Store',
+  title: 'Emporium',
   description: 'An e-commerce site created with Next.js, Typescript and Tailwind.',
 }
 
